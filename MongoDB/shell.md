@@ -13,6 +13,7 @@ db.*collectionName* - returns name of collection like "Collection db.name"
 show collections - show names of all collections in DB  
 show dbs - Shows all databases you have.  
 use *dbName* - switches to a database, you can switch to a non existent database, insert data and it will be saved auto.  
+db.dropDatabase() - Deletes database
 
 var name = "yoshi" (Create variable)  
 name (will output yoshi)  
@@ -27,15 +28,23 @@ List of operators:
 - $lt - Less than  
 - $gte - Greater than or equal to  
 - $lte - Less than or equal to  
-- $or [] - Finds documents with multiple filters.  
+- $eq - equal to
+- $ne - not equal to
+- $or [] - Finds documents with multiple filters. 
+- $and [] - Finds documents that meet multiple conditions 
+- $not - Finds documents that don't meet condition
 - $in [] - Finds documents with a value in the array  
 - $nin [] - Finds documents with values outside array  
 - $all [] - Finds documents with an array of attributes (like genres of a book)  
 - $set - Updates values of a document  
+- $unset - Removes a column/attribute. 
 - $inc - Increments attribute of a document by a numeric value (+ for add, - for minus)  
+- $rename - Renames a column/attribute (firstName to fname). 
 - $pull - Removes attribute from a document  
 - $push - Adds an attribute to a document  
 - $each - Adds an array of values to an attribute  
+- $exists - Returns documents which include an attribute. 
+- $expr {$gt: ["$debt", "$balance"]} - compares columns and returns if debt > balance
 
 ## Querying the database  
 
@@ -98,10 +107,11 @@ db.books.find() - Outputs first 20 books found
 it - iterates over next 20 books  
 
 db.books.find({author: "Terry", rating: 7}) - Finds books with author terry and rating of 7.  
-db.books.find({author: "Terry"}, {title: 1, author: 1}) - previous but returns only title/author (ID by default too)  
+db.books.find({author: "Terry"}, {title: 1, author: 1}) - previous but returns only title/author (ID by default too unless put at 0 to exclude)  
 db.books.find({}, {title: 1}) - returns titles of first 20 books  
 db.books.findOne({_id: ObjectId("fs76fje33443")}) - returns book with this ID  
 db.books.findOne({author: "Terry"}) - returns first book with author terry  
+db.books.find().skip(1) - Skips 1st document found and returns the second. 
 
 #### Complex commands  
 db.books.find().count() - returns number of documents found (find query can be same format as prev section)  
@@ -147,5 +157,14 @@ db.books.deleteOne({author: "Terry"}) - possible but not recommended if many hav
 db.books.deleteMany({author: "Terry"}) - Deletes all books with terry as author.  
 
 
+## Indexes
+.explain("executionStats") - shows stats of query - how many documents examined, returned etc. - Put at end of find
 
+db.books.createIndex({rating: 1}) - Creates index of books for ascending sort, -1 for descending
+db.books.dropIndex({rating: 1})
+
+## Creating collections
+db.createCollection("teachers", {capped: true, size: 1000000, max: 100}) - Maximum size 10mb and 100 teachers
+db.createCollection("teachers", {capped: true, size: 1000000, max: 100}, {autoIndexId: false}) - automatically create index for id
+db.teachers.drop() - drops collection
 
