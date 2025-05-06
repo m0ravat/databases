@@ -23,7 +23,7 @@ Start it up by running mongosh in the terminal
     ],
     "_id": ObjectId("sfhk743j")
 }
-
+```
 
 ## Table of contents  
 - [MongoDB Compass](compass.md)  
