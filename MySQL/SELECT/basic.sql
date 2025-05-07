@@ -1,15 +1,7 @@
-SELECT last_name, job_id, hire_date
-FROM employees
-WHERE last_name = 'Matos' OR last_name = 'Taylor'
-ORDER BY hire_date
 
-SELECT last_name AS 'Employee', salary AS 'Salary', department_id AS 'DepID'
+SELECT last_name AS 'Employee', job_id, hire_date, salary
 FROM employees
-WHERE department_id=20 OR department_id=40 AND salary BETWEEN 37000 AND 57000
-
-SELECT last_name, job_id, hire_date, salary
-FROM employees
-WHERE department_id=40 AND salary>41000 OR department_id=40 AND hire_date<'2016-02-16'
+WHERE department_id=40 AND salary BETWEEN 37000 AND 57000  AND hire_date<'2016-02-16' OR last_name = 'Taylor'
 
 SELECT last_name
 FROM employees

@@ -1,7 +1,3 @@
-SELECT D.department_name, L.city, L.country
-FROM locations L JOIN departments D
-ON L.location_id = D.location_id
-WHERE L.city='Cambridge'
 
 SELECT D.department_name, E.first_name, E.last_name
 FROM employees E JOIN departments D
@@ -15,20 +11,12 @@ JOIN employees E ON E.department_id = D.department_id
 WHERE E.hire_date > '2015-03-02' OR E.salary<46000
 ORDER BY L.country, L.city, D.department_name
 
-SELECT E.employee_id AS 'Employee', E.first_name, E.last_name, E.manager_id AS 'Manager'
-FROM employees E
-WHERE E.manager_id IS NOT NULL
 
 SELECT CONCAT(M.first_name, ' ', M.last_name, ' (ID: ', M.employee_id, ') manages: ', E.first_name, ' ', E.last_name, ' (ID: ', E.employee_id, ')') AS 'Management'
 FROM employees E
 JOIN employees M ON E.manager_id = M.employee_id
 WHERE E.manager_id IS NOT NULL
 
-SELECT E.last_name, E.salary, J.job_title
-FROM employees E
-JOIN jobs J ON E.job_id=J.job_id
-JOIN departments D on E.department_id=D.department_id
-WHERE D.department_name = 'IT'
 
 SELECT E.last_name, E.salary, J.job_title, E.hire_date, D.department_name, L.city
 FROM employees E

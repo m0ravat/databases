@@ -1,25 +1,11 @@
-SELECT D.department_name, ' ', E.first_name, ' ', E.last_name, E.hire_date
+SELECT D.department_name, CONCAT(E.first_name, ' ', E.last_name) AS full_name, E.hire_date
 FROM departments D
 LEFT JOIN employees E on D.department_id=E.department_id
 ORDER BY D.department_name
 
-SELECT D.department_name, ' ', E.first_name, ' ', E.last_name, E.hire_date
-FROM employees E
-LEFT JOIN departments D on E.department_id=D.department_id
-LEFT JOIN jobs J ON E.job_id = J.job_id
-ORDER BY D.department_name
-
-SELECT E.last_name, E.salary, E.hire_date, E.department_id
-FROM departments D
-JOIN employees E ON D.department_id = E.department_id
-WHERE D.location_id = 100
-ORDER BY E.department_id
-
-
 SELECT D.department_name, E.first_name, E.last_name, E.hire_date, E.salary
 FROM departments D LEFT OUTER JOIN employees E
 ON D.department_id = E.department_id
-
 
 SELECT D.department_name, E.first_name, E.last_name, E.hire_date, E.salary
 FROM departments D RIGHT OUTER JOIN employees E
