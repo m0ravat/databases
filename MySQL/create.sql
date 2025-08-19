@@ -58,3 +58,14 @@ CREATE TABLE employees
 	constraint 		e_jid_fk FOREIGN KEY (job_id)
 	references 		jobs(job_id)
 );
+
+RENAME TABLE employees to Employees
+
+
+ALTER TABLE Employees 
+ADD phoneNo INTEGER;
+RENAME COLUMN phoneNo to telephone;
+MODIFY COLUMN telephone varchar(15);
+MODIFY COLUMN telephone varchar(!5) AFTER email; /*Can use FIRST/LAST*/
+DROP COLUMN telephone;
+SELECT * FROM Employees
