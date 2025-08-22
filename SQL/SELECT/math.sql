@@ -34,7 +34,8 @@ ORDER BY J.job_title
 SELECT D.department_id, D.department_name, AVG(IFNULL(E.salary,0.0))
 FROM departments D
 LEFT OUTER JOIN employees E on D.department_id=E.department_id
-GROUP BY D.department_id
+GROUP BY D.department_id /*groups average salary for each department id.*/ Can also add WITH ROLLUP at the end of GROUP BY
+statement for a sum of all averages. 
 
 SELECT J.job_id, J.job_title, COUNT(E.job_id) 
 FROM jobs J 
@@ -42,3 +43,6 @@ JOIN employees E ON E.job_id = J.job_id
 WHERE E.job_id IN (902,903,906,908,909,910,911)
 GROUP BY J.job_title
 HAVING COUNT(E.job_id) > 1
+
+COUNT() - returns rows returned as a number. 
+CONCAT() - Merges values together like for full name. 

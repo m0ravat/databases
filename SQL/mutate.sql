@@ -31,3 +31,9 @@ WHERE c.ClassName = 'History';
 -- 2. Run a SELECT with the same condition first to verify affected rows.
 -- Example:
 -- SELECT * FROM Orders WHERE OrderDate < '2024-01-01';
+
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition; /*where clause to make sure not every record is changed, can chnage all or by ID or something like country*/
+/*can also make values Null if nullable*/

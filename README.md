@@ -20,9 +20,13 @@ It's also worth noting that these are my subjective opinion, the UIs for these c
 
 
 # SQL vs noSQL 
-SQL databases tend to have more structure as data is inserted into tables, similar to an Excel file. It is typically very strict as tables mapped out with dependencies can be tedious to delete if you have foreign keys in multiple tables. NoSQL databases on the other hand can store data in other formats, with the main implementation of MongoDB granting users the ability to export/import data in JSON and CSV making it highly portable. Especially with the rising use of JavaScript it is becoming more used since it pairs well with a JS based frameworks built in JSON functions.        
-An SQL database has many upsides, they are typically more optimized and can flex faster speeds but normally run on a local machine/VM/server whereas NoSQL databases normally run on the cloud. SQL databases however can run from one base file, Django as an example runs SQLite without much overhead which can also be useful for mobile apps designed to run without internet connection.       
-At a basic level MongoDB can be a very solid starter database in a software related project since it's easy to setup and integrate, however I still think learning how to query SQL based databases is a relevant and crucial skill. The main consideration for beginners is whether the system being implemented has detailed requirements and there isn't an anticipation in new data being handled, if so the ideal would be using an ORM for an SQL database (Note, Django has built in support with SQLite databases and a built-in admin dashboard). 
+SQL databases tend to have more structure as data is inserted into tables, similar to an Excel file while NoSQL follows a more lenient format like MongoDB collections. They tend to take slightly different approaches in matters, for example where you may have a composite primary key in SQL, since NoSQL allows storing arrays you may have foreign keys in both tables instead of a join table. 
 
-# 
+# Setting up respective databases
+For beginners, MongoDB is typically the most friendly database at the start since you can easily set it up on the cloud for free by creating an account, hence its popularity in the MERN/MEAN stacks. However, the main limitation is your MongoDB server may be set up in a different country to your deployed website which can produce delays.    
+
+SQL oriented databases tend to be harder since many are stuck behind a paywall, but you can set up a server locally like MySQL which wouldn't typically be optimal for a personal project since it's unlikely to be running 24/7 and using cloud services typically costs money. The alternative is using an ORM which allows your app to store the database in the project in a specific folder/file which you can query. Django also has built in support with SQLite and has a built in admin dashboard making it easy to see your data. It's worth noting ORMs can also come with limitations, Prisma ORM for certain SQL databases can't be deployed on Vercel for example due to architectural incompatibilities which can require significant workarounds so it's best to do research for optimal combinations. 
+# Resources
+[w3Schools SQL Datatypes and other resources](https://www.w3schools.com/sql/sql_datatypes.asp)
+[MySQL Tutorial On Youtube via BroCode](https://www.youtube.com/watch?v=5OdVJbNCSso)
 
